@@ -6,6 +6,7 @@ import com.samcarlinone.netpong.game.TestShader;
 import com.samcarlinone.netpong.util.KeyboardInput;
 import org.lwjgl.glfw.*;
 import org.lwjgl.opengl.*;
+import org.lwjgl.system.MemoryUtil;
 
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
@@ -34,14 +35,15 @@ public class Main implements Runnable{
     }
 
     private void init() {
+        System.out.print("fufti");
         if (!glfwInit()) {
             System.err.println("Could not initialize GLFW!");
             return;
         }
-
+        System.out.print("fufti");
         glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);
-
-        window = glfwCreateWindow(width, height, "NetPong", NULL, NULL);
+        System.out.print("fufti");
+        window = glfwCreateWindow(width, height, "NetPong", 0L, 0L);
         if (window == NULL) {
             System.err.println("Could not create GLFW window!");
             return;
@@ -122,6 +124,7 @@ public class Main implements Runnable{
     }
 
     public static void main(String[] args) {
+        System.out.println("Hekk");
         new Main().start();
     }
 }

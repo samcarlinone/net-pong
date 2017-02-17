@@ -7,6 +7,9 @@ import org.lwjgl.opengl.GLCapabilities;
 import org.lwjgl.opengl.GLUtil;
 import org.lwjgl.system.Callback;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.FloatBuffer;
@@ -43,32 +46,35 @@ public class TextRenderer {
 
         glTexImage3D(GL_TEXTURE_2D_ARRAY, 0, GL_RGB8, texSize, texSize, 2, 0, GL_RGB,
                 GL_UNSIGNED_BYTE, (ByteBuffer) null);
-        ByteBuffer bb = BufferUtils.createByteBuffer(3 * texSize * texSize);
-        int checkSize = 5;
-		/* Generate some checker board pattern */
-        for (int y = 0; y < texSize; y++) {
-            for (int x = 0; x < texSize; x++) {
-                if (((x/checkSize + y/checkSize) % 2) == 0) {
-                    bb.put((byte) 255).put((byte) 255).put((byte) 255);
-                } else {
-                    bb.put((byte) 0).put((byte) 0).put((byte) 0);
-                }
-            }
+
+        BufferedImage img = null;
+
+        try {
+            img = ImageIO.read(new File("bitmap_font.png"));
+        } catch (IOException e) {
+            System.err.println("Image Not Loaded");
+            return;
+        }
+
+        int[] data = img.getData().getPixels(16, 0, 16, 16, new int[16*16*4]);
+
+        ByteBuffer bb = BufferUtils.createByteBuffer(16*16 * 3);
+        glTexSubImage3D(GL_TEXTURE_2D_ARRAY, 0, 0, 0, 0, 16, 16, 1, GL_RGB, GL_UNSIGNED_BYTE, bb);
+        for (int i=0; i<16*16 * 4; i+=4) {
+            bb.put((byte) data[i]).put((byte) data[i+1]).put((byte) data[i+2]);
         }
         bb.flip();
-        glTexSubImage3D(GL_TEXTURE_2D_ARRAY, 0, 0, 0, 0, texSize, texSize, 1, GL_RGB, GL_UNSIGNED_BYTE, bb);
-		/* Generate some diagonal lines for the second layer */
-        for (int y = 0; y < texSize; y++) {
-            for (int x = 0; x < texSize; x++) {
-                if ((x + y) / 3 % 3 == 0) {
-                    bb.put((byte) 255).put((byte) 255).put((byte) 255);
-                } else {
-                    bb.put((byte) 0).put((byte) 0).put((byte) 0);
-                }
-            }
+
+        //Next
+        data = img.getData().getPixels(16, 16, 16, 16, new int[16*16*4]);
+
+        bb = BufferUtils.createByteBuffer(16*16 * 3);
+        glTexSubImage3D(GL_TEXTURE_2D_ARRAY, 0, 0, 0, 1, 16, 16, 1, GL_RGB, GL_UNSIGNED_BYTE, bb);
+        for (int i=0; i<16*16 * 4; i+=4) {
+            bb.put((byte) data[i]).put((byte) data[i+1]).put((byte) data[i+2]);
         }
         bb.flip();
-        glTexSubImage3D(GL_TEXTURE_2D_ARRAY, 0, 0, 0, 1, texSize, texSize, 1, GL_RGB, GL_UNSIGNED_BYTE, bb);
+
         glGenerateMipmap(GL_TEXTURE_2D_ARRAY);
         glBindTexture(GL_TEXTURE_2D_ARRAY, 0);
     }
@@ -98,9 +104,9 @@ public class TextRenderer {
         fv.put(0f).put(0f).put(0);
         fv.put(1.0f).put(0f).put(0);
         fv.put(1.0f).put(1.0f).put(0);
-        fv.put(1.0f).put(1.0f).put(1f);
-        fv.put(0).put(1.0f).put(1f);
-        fv.put(0).put(0).put(1f);
+        fv.put(1.0f).put(1.0f).put(0f);
+        fv.put(0).put(1.0f).put(0f);
+        fv.put(0).put(0).put(0f);
         glBufferData(GL_ARRAY_BUFFER, bb, GL_STATIC_DRAW);
         glEnableVertexAttribArray(1);
         glVertexAttribPointer(1, 3, GL_FLOAT, false, 0, 0L);

@@ -7,6 +7,11 @@ import com.samcarlinone.netpong.graphics.Shader;
 import com.samcarlinone.netpong.math.Collision;
 import com.samcarlinone.netpong.math.Matrix4f;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
 /**
  * Created by CARLINSE1 on 2/9/2017.
  */
@@ -31,11 +36,7 @@ public class LocalGame implements Module {
 
         b = new Ball(0, 0, -4, 0);
 
-        try {
-            text = new Font("hack.ttf", 32);
-        } catch(Exception e) {
-            System.out.println("Font Error");
-        }
+
     }
 
     public void render() {
