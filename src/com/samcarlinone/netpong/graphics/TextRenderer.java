@@ -44,7 +44,7 @@ public class TextRenderer {
         glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
         glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 
-        glTexImage3D(GL_TEXTURE_2D_ARRAY, 0, GL_RGB8, texSize, texSize, 2, 0, GL_RGB,
+        glTexImage3D(GL_TEXTURE_2D_ARRAY, 0, GL_RGB8, 16, 16, 2, 0, GL_RGB,
                 GL_UNSIGNED_BYTE, (ByteBuffer) null);
 
         BufferedImage img = null;
@@ -56,24 +56,25 @@ public class TextRenderer {
             return;
         }
 
-        int[] data = img.getData().getPixels(16, 0, 16, 16, new int[16*16*4]);
-
+        int[] data = img.getData().getPixels(16, 48, 16, 16, new int[16*16*4]);
         ByteBuffer bb = BufferUtils.createByteBuffer(16*16 * 3);
-        glTexSubImage3D(GL_TEXTURE_2D_ARRAY, 0, 0, 0, 0, 16, 16, 1, GL_RGB, GL_UNSIGNED_BYTE, bb);
+
         for (int i=0; i<16*16 * 4; i+=4) {
             bb.put((byte) data[i]).put((byte) data[i+1]).put((byte) data[i+2]);
         }
         bb.flip();
+        //bb.flip();
+        glTexSubImage3D(GL_TEXTURE_2D_ARRAY, 0, 0, 0, 0, 16, 16, 1, GL_RGB, GL_UNSIGNED_BYTE, bb);
 
         //Next
         data = img.getData().getPixels(16, 16, 16, 16, new int[16*16*4]);
 
         bb = BufferUtils.createByteBuffer(16*16 * 3);
-        glTexSubImage3D(GL_TEXTURE_2D_ARRAY, 0, 0, 0, 1, 16, 16, 1, GL_RGB, GL_UNSIGNED_BYTE, bb);
         for (int i=0; i<16*16 * 4; i+=4) {
             bb.put((byte) data[i]).put((byte) data[i+1]).put((byte) data[i+2]);
         }
         bb.flip();
+        glTexSubImage3D(GL_TEXTURE_2D_ARRAY, 0, 0, 0, 1, 16, 16, 1, GL_RGB, GL_UNSIGNED_BYTE, bb);
 
         glGenerateMipmap(GL_TEXTURE_2D_ARRAY);
         glBindTexture(GL_TEXTURE_2D_ARRAY, 0);
