@@ -49,6 +49,7 @@ public class TestShader implements Module {
     }
 
     public Module update() {
+        renderer.update();
         return null;
     }
 }
