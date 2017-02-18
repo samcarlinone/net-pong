@@ -12,4 +12,7 @@ public interface CRect {
     float getY();
     float getWidth();
     float getHeight();
+
+    void setX(float newX);
+    void setY(float newY);
 }

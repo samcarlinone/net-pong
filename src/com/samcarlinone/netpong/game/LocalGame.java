@@ -28,8 +28,6 @@ public class LocalGame implements Module {
         p2 = new Paddle(500, 0);
 
         b = new Ball(0, 0, -4, 0);
-
-
     }
 
     public void render() {
@@ -52,25 +50,25 @@ public class LocalGame implements Module {
         p2.update();
         b.update();
 
-        if(b.y+b.height > Main.height/2 || b.y-b.height < -Main.height/2) {
-            b.vy = -b.vy;
+        if(b.rect.y+b.rect.h > Main.height/2 || b.rect.y-b.rect.h < -Main.height/2) {
+            b.rect.yv = -b.rect.yv;
         }
 
-        if(Collision.cRectXcRect(p1, b)) {
-            b.vx = -b.vx + Math.copySign(0.5f, -b.vx);
-            b.vy += p1.vy / 5f;
+        if(Collision.RectXRect(p1.rect, b.rect)) {
+            b.rect.xv = -b.rect.xv + Math.copySign(0.5f, -b.rect.xv);
+            b.rect.yv += p1.rect.yv / 5f;
 
-            pm.spawnAngled(b.x, b.y, 20, (float)Math.PI/2f, (float)Math.PI/-2f, 10f, 60f);
+            pm.spawnAngled(b.rect.x, b.rect.y, 20, (float)Math.PI/2f, (float)Math.PI/-2f, 10f, 60f);
         }
 
-        if(Collision.cRectXcRect(p2, b)) {
-            b.vx = -b.vx*1.1f;
-            b.vy += p2.vy / 5f;
+        if(Collision.RectXRect(p2.rect, b.rect)) {
+            b.rect.xv = -b.rect.xv*1.1f;
+            b.rect.yv += p2.rect.yv / 5f;
 
-            pm.spawnAngled(b.x, b.y, 20, (float)Math.PI/2f, (float)Math.PI*3f/2f, 10f, 60f);
+            pm.spawnAngled(b.rect.x, b.rect.y, 20, (float)Math.PI/2f, (float)Math.PI*3f/2f, 10f, 60f);
         }
 
-        pm.spawn(b.x, b.y, 1);
+        pm.spawn(b.rect.x, b.rect.y, 1);
         pm.update();
 
         return null;

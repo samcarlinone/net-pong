@@ -4,9 +4,9 @@ package com.samcarlinone.netpong.math;
  * Created by CARLINSE1 on 2/10/2017.
  */
 public class Collision {
-    public static boolean cRectXcRect(CRect r1, CRect r2) {
-        if(r1.getX()+r1.getWidth() > r2.getX()-r2.getWidth() && r2.getX()+r2.getWidth() > r1.getX()-r1.getWidth()) {
-            if(r1.getY()+r1.getHeight() > r2.getY()-r2.getHeight() && r2.getY()+r2.getHeight() > r1.getY()-r1.getHeight()) {
+    public static boolean RectXRect(Rect r1, Rect r2) {
+        if(r1.x+r1.w > r2.x-r2.w && r2.x+r2.w > r1.x-r1.w) {
+            if(r1.y+r1.h > r2.y-r2.h && r2.y+r2.h > r1.y-r1.h) {
                 return true;
             }
         }

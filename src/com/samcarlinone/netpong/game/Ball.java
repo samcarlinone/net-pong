@@ -3,6 +3,7 @@ package com.samcarlinone.netpong.game;
 import com.samcarlinone.netpong.graphics.BasicMesh;
 import com.samcarlinone.netpong.graphics.Shader;
 import com.samcarlinone.netpong.math.CRect;
+import com.samcarlinone.netpong.math.DynamicRect;
 import com.samcarlinone.netpong.math.Matrix4f;
 import com.samcarlinone.netpong.math.Vector3f;
 import com.samcarlinone.netpong.util.KeyboardInput;
@@ -10,16 +11,20 @@ import com.samcarlinone.netpong.util.KeyboardInput;
 /**
  * Created by CARLINSE1 on 2/9/2017.
  */
-public class Ball implements CRect {
+public class Ball {
     private BasicMesh mesh;
 
-    public float x = 0f, y = 0f, vx = 0f, vy = 0f, scale = 10f, width = 10f, height = 10f;
+    public float scale = 10f;
 
-    public Ball(float x, float y, float vx, float vy) {
-        this.x = x;
-        this.y = y;
-        this.vx = vx;
-        this.vy = vy;
+    public DynamicRect rect = new DynamicRect(0, 0, 10, 10);
+
+    public Ball(float x, float y, float xv, float yv) {
+        rect.x = x;
+        rect.y = y;
+        rect.w = scale;
+        rect.h = scale;
+        rect.xv = xv;
+        rect.yv = yv;
 
         int NUM_POINTS = 32;
         float[] points = new float[NUM_POINTS*3*2];
@@ -43,31 +48,13 @@ public class Ball implements CRect {
         mat.identity();
         //mat.translate(new Vector3f(0.5f, 0.5f, 0f));
         mat.scale(new Vector3f(scale, scale, 0f));
-        mat.translate(new Vector3f(x, y, 0f));
+        mat.translate(new Vector3f(rect.x, rect.y, 0f));
 
         shader.setUniformMat4f("trs", mat);
         mesh.render();
     }
 
     public void update() {
-        x += vx;
-        y += vy;
-    }
-
-
-    public float getX() {
-        return x;
-    }
-
-    public float getY() {
-        return y;
-    }
-
-    public float getWidth() {
-        return width;
-    }
-
-    public float getHeight() {
-        return height;
+        rect.update();
     }
 }
