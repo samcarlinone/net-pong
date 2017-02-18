@@ -9,11 +9,14 @@ import org.lwjgl.system.Callback;
 import org.lwjgl.system.CallbackI;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.FloatBuffer;
+import java.util.AbstractList;
+import java.util.ArrayList;
 
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
@@ -31,13 +34,23 @@ public class TextRenderer {
     private int texSize = 16;
     private int tex;
     private int vao;
+    private int totalLength=0;
 
-    private int anim = 5;
-    private int anim_stage = 0;
+    private AbstractList<Text> texts;
 
     public TextRenderer() {
+        texts = new ArrayList<>(8);
+
         createTexture();
         createVao();
+    }
+
+    public void addText(Text text) {
+        texts.add(text);
+    }
+
+    public void deleteText(Text text) {
+        texts.remove(text);
     }
 
     private void createTexture() {
@@ -58,18 +71,18 @@ public class TextRenderer {
             return;
         }
 
-        for(int j=0; j<26; j++) {
+        for(int j=0; j<256; j++) {
             int[] data = img.getData().getPixels(j%16 * 16, (int) Math.floor(j/16) * 16, texSize, texSize, new int[texSize * texSize * 4]);
             ByteBuffer bb = BufferUtils.createByteBuffer(texSize * texSize * 3);
 
             for(int y=texSize-1; y>=0; y--) {
                 for(int x=0; x<texSize; x++) {
                     int i = (y*texSize + x)*4;
+                    byte t = (byte) data[i];
                     bb.put((byte) data[i]).put((byte) data[i+1]).put((byte) data[i+2]);
                 }
             }
             bb.flip();
-            //bb.flip();
             glTexSubImage3D(GL_TEXTURE_2D_ARRAY, 0, 0, 0, j, 16, 16, 1, GL_RGB, GL_UNSIGNED_BYTE, bb);
         }
 
@@ -84,12 +97,12 @@ public class TextRenderer {
         glBindBuffer(GL_ARRAY_BUFFER, vbo);
         ByteBuffer bb = BufferUtils.createByteBuffer(4 * 2 * 6);
         FloatBuffer fv = bb.asFloatBuffer();
-        fv.put(-1.0f).put(-1.0f);
-        fv.put(1.0f).put(-1.0f);
-        fv.put(1.0f).put(1.0f);
-        fv.put(1.0f).put(1.0f);
-        fv.put(-1.0f).put(1.0f);
-        fv.put(-1.0f).put(-1.0f);
+        fv.put(0).put(0);
+        fv.put(0).put(0);
+        fv.put(0).put(0);
+        fv.put(0).put(0);
+        fv.put(0).put(0);
+        fv.put(0).put(0);
         glBufferData(GL_ARRAY_BUFFER, bb, GL_STATIC_DRAW);
         glEnableVertexAttribArray(0);
         glVertexAttribPointer(0, 2, GL_FLOAT, false, 0, 0L);
@@ -99,12 +112,12 @@ public class TextRenderer {
         glBindBuffer(GL_ARRAY_BUFFER, vbo);
         bb = BufferUtils.createByteBuffer(4 * 3 * 6);
         fv = bb.asFloatBuffer();
-        fv.put(0f).put(0f).put(0);
-        fv.put(1.0f).put(0f).put(0);
-        fv.put(1.0f).put(1.0f).put(0);
-        fv.put(1.0f).put(1.0f).put(0f);
-        fv.put(0).put(1.0f).put(0f);
-        fv.put(0).put(0).put(0f);
+        fv.put(0).put(0).put(0);
+        fv.put(0).put(0).put(0);
+        fv.put(0).put(0).put(0);
+        fv.put(0).put(0).put(0);
+        fv.put(0).put(0).put(0);
+        fv.put(0).put(0).put(0);
         glBufferData(GL_ARRAY_BUFFER, bb, GL_STATIC_DRAW);
         glEnableVertexAttribArray(1);
         glVertexAttribPointer(1, 3, GL_FLOAT, false, 0, 0L);
@@ -113,43 +126,89 @@ public class TextRenderer {
         glBindVertexArray(0);
     }
 
-    private void updateBuffers(float i) {
+    private void regenVao() {
+        totalLength = 0;
+
+        for (Text t: texts) {
+            totalLength += t.getLength();
+        }
+
+        //Position Data
         int vbo = glGenBuffers();
         glBindVertexArray(vao);
         glBindBuffer(GL_ARRAY_BUFFER, vbo);
-        ByteBuffer bb = BufferUtils.createByteBuffer(4 * 3 * 6);
+        ByteBuffer bb = BufferUtils.createByteBuffer(totalLength * 4 * 2 * 6);
         FloatBuffer fv = bb.asFloatBuffer();
-        fv.put(0f).put(0f).put(i);
-        fv.put(1.0f).put(0f).put(i);
-        fv.put(1.0f).put(1.0f).put(i);
-        fv.put(1.0f).put(1.0f).put(i);
-        fv.put(0).put(1.0f).put(i);
-        fv.put(0).put(0).put(i);
+
+        for (Text t: texts) {
+            char[] letters = t.getCharArray();
+
+            for(int i=0; i<letters.length; i++) {
+                fv.put((i*texSize) + t.getX()).put(t.getY() + texSize);
+                fv.put((i*texSize) + t.getX()).put(t.getY());
+                fv.put((i*texSize) + t.getX() + texSize).put(t.getY());
+
+                fv.put((i*texSize) + t.getX() + texSize).put(t.getY());
+                fv.put((i*texSize) + t.getX() + texSize).put(t.getY() + texSize);
+                fv.put((i*texSize) + t.getX()).put(t.getY() + texSize);
+            }
+        }
+
+        glBufferData(GL_ARRAY_BUFFER, bb, GL_STATIC_DRAW);
+        glEnableVertexAttribArray(0);
+        glVertexAttribPointer(0, 2, GL_FLOAT, false, 0, 0L);
+
+        //Texture Data
+        vbo = glGenBuffers();
+        glBindVertexArray(vao);
+        glBindBuffer(GL_ARRAY_BUFFER, vbo);
+        bb = BufferUtils.createByteBuffer(totalLength * 4 * 3 * 6);
+        fv = bb.asFloatBuffer();
+
+        for(Text t: texts) {
+            char[] letters = t.getCharArray();
+
+            for(int i=0; i<letters.length; i++) {
+                fv.put(0).put(1).put(letters[i]);
+                fv.put(0).put(0).put(letters[i]);
+                fv.put(1).put(0).put(letters[i]);
+
+                fv.put(1).put(0).put(letters[i]);
+                fv.put(1).put(1).put(letters[i]);
+                fv.put(0).put(1).put(letters[i]);
+            }
+        }
         glBufferData(GL_ARRAY_BUFFER, bb, GL_STATIC_DRAW);
         glEnableVertexAttribArray(1);
         glVertexAttribPointer(1, 3, GL_FLOAT, false, 0, 0L);
 
+        //Unbind buffers
         glBindBuffer(GL_ARRAY_BUFFER, 0);
         glBindVertexArray(0);
     }
 
     public void render() {
+        if(totalLength == 0)
+            return;
+
         glBindVertexArray(vao);
         glBindTexture(GL_TEXTURE_2D_ARRAY, tex);
-        glDrawArrays(GL_TRIANGLES, 0, 6);
+        glDrawArrays(GL_TRIANGLES, 0, totalLength * 6);
         glBindTexture(GL_TEXTURE_2D_ARRAY, 0);
         glBindVertexArray(0);
-
-        glUseProgram(0);
     }
 
     public void update() {
-        anim --;
+        for (Text t: texts) {
+            if(t.isDirty()) {
+                regenVao();
 
-        if(anim == 0) {
-            anim = 60;
-            anim_stage ++;
-            updateBuffers(anim_stage);
+                for (Text text: texts) {
+                    text.setClean();
+                }
+
+                break;
+            }
         }
     }
 }

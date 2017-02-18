@@ -35,14 +35,13 @@ public class Main implements Runnable{
     }
 
     private void init() {
-        System.out.print("fufti");
         if (!glfwInit()) {
             System.err.println("Could not initialize GLFW!");
             return;
         }
-        System.out.print("fufti");
+
         glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);
-        System.out.print("fufti");
+
         window = glfwCreateWindow(width, height, "NetPong", 0L, 0L);
         if (window == NULL) {
             System.err.println("Could not create GLFW window!");
@@ -118,13 +117,12 @@ public class Main implements Runnable{
 
         int error = glGetError();
         if (error != GL_NO_ERROR)
-            System.out.println(error);
+            System.err.println("GL Error: " + error);
 
         glfwSwapBuffers(window);
     }
 
     public static void main(String[] args) {
-        System.out.println("Hekk");
         new Main().start();
     }
 }
