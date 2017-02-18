@@ -16,7 +16,9 @@ public class Paddle {
     public StaticRect rect = new StaticRect(0, 0, 15, 75);
     public float speed = 5f;
 
-    public Paddle(float x, float y) {
+    private int up, down;
+
+    public Paddle(float x, float y, int up, int down) {
         rect.x = x;
         rect.y = y;
 
@@ -26,6 +28,9 @@ public class Paddle {
                 1f, -1f,
                 1f, 1f
         });
+
+        this.up = up;
+        this.down = down;
     }
 
     public void render(Shader shader) {
@@ -39,10 +44,10 @@ public class Paddle {
     }
 
     public void update() {
-        if(KeyboardInput.isKeyDown('W')) {
+        if(KeyboardInput.isKeyDown(this.up)) {
             rect.yv = speed;
         } else {
-            if (KeyboardInput.isKeyDown('S')) {
+            if (KeyboardInput.isKeyDown(this.down)) {
                 rect.yv = -speed;
             } else {
                 rect.yv = 0f;

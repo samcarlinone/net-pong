@@ -6,6 +6,9 @@ import com.samcarlinone.netpong.graphics.Shader;
 import com.samcarlinone.netpong.math.Collision;
 import com.samcarlinone.netpong.math.Matrix4f;
 import com.samcarlinone.netpong.math.Resolver;
+import com.samcarlinone.netpong.util.KeyboardInput;
+
+import java.security.Key;
 
 /**
  * Created by CARLINSE1 on 2/9/2017.
@@ -18,6 +21,8 @@ public class LocalGame implements Module {
     private Paddle p1;
     private Paddle p2;
     private Ball b;
+    private Boolean ballStarted;
+    private Boolean kickoffLeft;
 
     public LocalGame() {
         trs = new Shader("trs");
@@ -25,10 +30,13 @@ public class LocalGame implements Module {
 
         pm = new ParticleManager();
 
-        p1 = new Paddle(-500, 0);
-        p2 = new Paddle(500, 0);
+        p1 = new Paddle(-500, 0, 'W', 'S');
+        p2 = new Paddle(500, 0, KeyboardInput.UP, KeyboardInput.DOWN);
 
-        b = new Ball(0, 0, -4, 0);
+        b = new Ball(0, 0, 0, 0);
+
+        kickoffLeft = Math.random() > 0.5;
+        ballStarted = false;
     }
 
     public void render() {
@@ -47,6 +55,16 @@ public class LocalGame implements Module {
     }
 
     public Module update() {
+        if(ballStarted) {
+            moveBall();
+        } else {
+            ballStuck();
+        }
+
+        return null;
+    }
+
+    private void moveBall() {
         p1.update();
         p2.update();
         b.update();
@@ -72,8 +90,33 @@ public class LocalGame implements Module {
 
         pm.spawn(b.rect.x, b.rect.y, 1);
         pm.update();
+    }
 
-        return null;
+    private void ballStuck() {
+        p1.update();
+        p2.update();
+
+        if(kickoffLeft) {
+            b.rect.y = p1.rect.y;
+            b.rect.x = p1.rect.x + b.rect.w + p1.rect.w;
+
+            if(KeyboardInput.isKeyDown('D')) {
+                b.rect.xv = 4;
+                b.rect.x += 2;
+                b.rect.yv += p1.rect.yv / 5f + Math.random()/2f;
+                ballStarted = true;
+            }
+        } else {
+            b.rect.y = p2.rect.y;
+            b.rect.x = p2.rect.x - (b.rect.w + p2.rect.w);
+
+            if(KeyboardInput.isKeyDown(KeyboardInput.LEFT)) {
+                b.rect.xv = -4;
+                b.rect.x += -2;
+                b.rect.yv += p2.rect.yv / 5f + Math.random()/2f;
+                ballStarted = true;
+            }
+        }
     }
 
 }
