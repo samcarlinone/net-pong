@@ -23,6 +23,7 @@ public class LocalGame implements Module {
     private Ball b;
     private Boolean ballStarted;
     private Boolean kickoffLeft;
+    private int p1Score, p2Score;
 
     public LocalGame() {
         trs = new Shader("trs");
@@ -30,13 +31,10 @@ public class LocalGame implements Module {
 
         pm = new ParticleManager();
 
-        p1 = new Paddle(-500, 0, 'W', 'S');
-        p2 = new Paddle(500, 0, KeyboardInput.UP, KeyboardInput.DOWN);
-
-        b = new Ball(0, 0, 0, 0);
+        init();
 
         kickoffLeft = Math.random() > 0.5;
-        ballStarted = false;
+        p1Score = p2Score = 0;
     }
 
     public void render() {
@@ -64,6 +62,14 @@ public class LocalGame implements Module {
         return null;
     }
 
+    private void init() {
+        p1 = new Paddle(-500, 0, 'W', 'S');
+        p2 = new Paddle(500, 0, KeyboardInput.UP, KeyboardInput.DOWN);
+        b = new Ball(0, 0, 0, 0);
+        ballStarted = false;
+        pm.reset();
+    }
+
     private void moveBall() {
         p1.update();
         p2.update();
@@ -71,8 +77,6 @@ public class LocalGame implements Module {
 
         Resolver.Dynamic_YLine(b.rect, -Main.height/2);
         Resolver.Dynamic_YLine(b.rect, Main.height/2);
-        Resolver.Dynamic_XLine(b.rect, -Main.width/2);
-        Resolver.Dynamic_XLine(b.rect, Main.width/2);
 
         if(Resolver.Dynamic_Static(b.rect, p1.rect)) {
             b.rect.xv = b.rect.xv*1.025f;
@@ -90,6 +94,18 @@ public class LocalGame implements Module {
 
         pm.spawn(b.rect.x, b.rect.y, 1);
         pm.update();
+
+        if(b.rect.x < -Main.width/2-10) {
+            p1Score ++;
+            kickoffLeft = false;
+            init();
+        }
+
+        if(b.rect.x > Main.width/2+10) {
+            p2Score ++;
+            kickoffLeft = true;
+            init();
+        }
     }
 
     private void ballStuck() {

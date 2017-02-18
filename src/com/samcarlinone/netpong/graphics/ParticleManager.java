@@ -34,6 +34,14 @@ public class ParticleManager {
         vbo = glGenBuffers();
     }
 
+    public void reset() {
+        for(int i=0; i<MAX_PARTICLES; i++){
+            parts[i].alive = false;
+        }
+
+        update();
+    }
+
     public void update() {
         //Update particles, check if alive
         numAlive = 0;

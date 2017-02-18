@@ -1,6 +1,6 @@
 package com.samcarlinone.netpong.game;
 
-import com.samcarlinone.netpong.graphics.BasicQuads;
+import com.samcarlinone.netpong.graphics.BasicMesh;
 import com.samcarlinone.netpong.graphics.Shader;
 import com.samcarlinone.netpong.math.Matrix4f;
 import com.samcarlinone.netpong.math.StaticRect;
@@ -11,7 +11,7 @@ import com.samcarlinone.netpong.util.KeyboardInput;
  * Created by CARLINSE1 on 2/8/2017.
  */
 public class Paddle {
-    private BasicQuads mesh;
+    private BasicMesh mesh;
 
     public StaticRect rect = new StaticRect(0, 0, 15, 75);
     public float speed = 5f;
@@ -22,11 +22,13 @@ public class Paddle {
         rect.x = x;
         rect.y = y;
 
-        mesh = new BasicQuads(new float[] {
+        mesh = new BasicMesh(new float[] {
                 -1f, 1f,
                 -1f, -1f,
                 1f, -1f,
-                1f, 1f
+                1f, -1f,
+                1f, 1f,
+                -1f, 1f
         });
 
         this.up = up;
