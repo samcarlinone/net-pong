@@ -63,7 +63,7 @@ public class Main implements Runnable{
         System.out.println("OpenGL: " + glGetString(GL_VERSION));
 
         //Load menu module
-        currentModule = new TestShader();
+        currentModule = new Menu();
     }
 
     public void run() {

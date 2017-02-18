@@ -45,12 +45,14 @@ public class TextRenderer {
         createVao();
     }
 
-    public void addText(Text text) {
+    public Text addText(Text text) {
         texts.add(text);
+        return text;
     }
 
-    public void deleteText(Text text) {
+    public Text deleteText(Text text) {
         texts.remove(text);
+        return text;
     }
 
     private void createTexture() {
@@ -141,15 +143,16 @@ public class TextRenderer {
 
         for (Text t: texts) {
             char[] letters = t.getCharArray();
+            float size = this.texSize * t.getScale();
 
             for(int i=0; i<letters.length; i++) {
-                fv.put((i*texSize) + t.getX()).put(t.getY() + texSize);
-                fv.put((i*texSize) + t.getX()).put(t.getY());
-                fv.put((i*texSize) + t.getX() + texSize).put(t.getY());
+                fv.put((i*size) + t.getX()).put(t.getY() + size);
+                fv.put((i*size) + t.getX()).put(t.getY());
+                fv.put((i*size) + t.getX() + size).put(t.getY());
 
-                fv.put((i*texSize) + t.getX() + texSize).put(t.getY());
-                fv.put((i*texSize) + t.getX() + texSize).put(t.getY() + texSize);
-                fv.put((i*texSize) + t.getX()).put(t.getY() + texSize);
+                fv.put((i*size) + t.getX() + size).put(t.getY());
+                fv.put((i*size) + t.getX() + size).put(t.getY() + size);
+                fv.put((i*size) + t.getX()).put(t.getY() + size);
             }
         }
 

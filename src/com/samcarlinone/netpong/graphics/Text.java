@@ -6,13 +6,14 @@ package com.samcarlinone.netpong.graphics;
 public class Text {
     private char[] text;
     private boolean dirty;
-    private float x, y;
+    private float x, y, scale;
 
     public Text(String in, float x, float y) {
         text = in.toCharArray();
         this.x = x;
         this.y = y;
         dirty = true;
+        scale = 1;
     }
 
     public void setText(String text) {
@@ -34,6 +35,16 @@ public class Text {
         dirty = true;
     }
 
+    public void setScale(float newScale) {
+        if(newScale <= 0){
+            System.err.println("Cannot set scale <= 0");
+            return;
+        }
+
+        scale = newScale;
+        dirty = true;
+    }
+
     public float getX() {
         return x;
     }
@@ -41,6 +52,8 @@ public class Text {
     public float getY() {
         return y;
     }
+
+    public float getScale() { return scale; }
 
     public int getLength() {
         return text.length;

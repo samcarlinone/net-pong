@@ -1,8 +1,7 @@
 package com.samcarlinone.netpong.game;
 
-import com.samcarlinone.netpong.graphics.BasicMesh;
-import com.samcarlinone.netpong.graphics.BasicQuads;
-import com.samcarlinone.netpong.graphics.Shader;
+import com.samcarlinone.netpong.Main;
+import com.samcarlinone.netpong.graphics.*;
 import com.samcarlinone.netpong.math.Matrix4f;
 import com.samcarlinone.netpong.util.KeyboardInput;
 
@@ -10,55 +9,61 @@ import com.samcarlinone.netpong.util.KeyboardInput;
  * Created by CARLINSE1 on 2/9/2017.
  */
 public class Menu implements Module {
-    private int anim = 0;
-
     private Shader basic;
-    private BasicMesh arrowThing;
-    private BasicQuads spaceBar;
+    private BasicMesh arrow1;
+    private BasicMesh arrow2;
+
+    private Shader textShader;
+    private TextRenderer renderer;
+    private Text t1;
+    private Text t2;
+
+    private boolean mode;
 
     public Menu() {
         basic = new Shader("basic");
 
-        arrowThing = new BasicMesh(new float[] {
-                -0.7f, 0.5f,
-                -0.7f, -0.5f,
-                -0.3f, 0f,
-
-                0.7f, 0.5f,
-                0.7f, -0.5f,
-                0.3f, 0f
+        arrow1 = new BasicMesh(new float[] {
+                -0.35f, 0.35f,
+                -0.5f, -0.15f,
+                -0.2f, -0.15f,
         });
 
-        spaceBar = new BasicQuads(new float[] {
-                -0.2f, 0.2f,
-                -0.2f, -0.2f,
-                -0.1f, -0.2f,
-                -0.1f, 0.2f,
-
-                0.2f, 0.2f,
-                0.2f, -0.2f,
-                0.1f, -0.2f,
-                0.1f, 0.2f,
-
-                0.1f, 0f,
-                -0.1f, 0f,
-                -0.1f, -0.2f,
-                0.1f, -0.2f,
+        arrow2 = new BasicMesh(new float[] {
+                0.35f, -0.25f,
+                0.5f, 0.25f,
+                0.2f, 0.25f,
         });
+
+        textShader = new Shader("text");
+        renderer = new TextRenderer();
+
+        t1 = renderer.addText(new Text("Splitscreen", -500f, 200f));
+        t1.setScale(3.5f);
+        t2 = renderer.addText(new Text("LAN Game", 0f, -200f));
+        t2.setScale(3.5f);
+
+        mode = false;
     }
 
     public void render () {
         basic.enable();
-
         Matrix4f projection = new Matrix4f();
         projection.orthographic(-1, 1, -1, 1, -1, 1);
         basic.setUniformMat4f("proj", projection);
 
-        spaceBar.render();
-
-        if(Math.sin(anim/20) > 0) {
-            arrowThing.render();
+        if(!mode) {
+            arrow1.render();
+        } else {
+            arrow2.render();
         }
+
+        textShader.enable();
+        projection = new Matrix4f();
+        projection.orthographic(-Main.width/2, Main.width/2, -Main.height/2, Main.height/2, -1, 1);
+
+        textShader.setUniformMat4f("proj", projection);
+        renderer.render();
 
         /*
         Matrix4f projection = new Matrix4f();
@@ -79,10 +84,18 @@ public class Menu implements Module {
     }
 
     public Module update() {
-        anim++;
+        renderer.update();
 
         if(KeyboardInput.isKeyDown(32)) {
             return new LocalGame();
+        }
+
+        if(KeyboardInput.isKeyDown(KeyboardInput.RIGHT) || KeyboardInput.isKeyDown('D')) {
+            mode = true;
+        }
+
+        if(KeyboardInput.isKeyDown(KeyboardInput.LEFT) || KeyboardInput.isKeyDown('A')) {
+            mode = false;
         }
 
         return null;
