@@ -16,22 +16,33 @@ public class TestShader implements Module {
     private TextRenderer renderer;
     private float pos=0;
     private Text text;
+    private Text t2;
+    private Text[] tex;
 
     public TestShader() {
         textShader = new Shader("text");
 
         renderer = new TextRenderer();
+
+        tex = new Text[256];
+
+        for(int i=0; i<256; i++) {
+            tex[i] = new Text(""+(Math.random()*120 + 50), (float)Math.random()*100f, (float)Math.random()*100f);
+            renderer.addText(tex[i]);
+        }
+
+
         text = new Text("HAZX", 0, 0);
         renderer.addText(text);
-        renderer.addText(new Text("BRO", 10, 16));
+        t2 = new Text("BRO#: ", -84, 16);
+        renderer.addText(t2);
     }
 
     public void render () {
         textShader.enable();
 
         Matrix4f projection = new Matrix4f();
-        //projection.orthographic(-Main.width/2, Main.width/2, -Main.height/2, Main.height/2, -1, 1);
-        projection.orthographic(-100, 100, -100, 100, -1, 1);
+        projection.orthographic(-Main.width/2, Main.width/2, -Main.height/2, Main.height/2, -1, 1);
 
         textShader.setUniformMat4f("proj", projection);
         renderer.render();
@@ -57,7 +68,7 @@ public class TestShader implements Module {
     public Module update() {
         pos ++;
         text.setX(pos);
-        text.setText("HAXS" + (char)(pos+65));
+        t2.setText("BRO#: " + pos);
         renderer.update();
         return null;
     }
