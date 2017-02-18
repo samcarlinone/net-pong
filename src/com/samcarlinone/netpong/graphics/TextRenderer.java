@@ -59,7 +59,7 @@ public class TextRenderer {
         glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
         glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 
-        glTexImage3D(GL_TEXTURE_2D_ARRAY, 0, GL_RGB8, texSize, texSize, 26, 0, GL_RGB,
+        glTexImage3D(GL_TEXTURE_2D_ARRAY, 0, GL_RGB8, texSize, texSize, 256, 0, GL_RGB,
                 GL_UNSIGNED_BYTE, (ByteBuffer) null);
 
         BufferedImage img = null;
@@ -78,7 +78,6 @@ public class TextRenderer {
             for(int y=texSize-1; y>=0; y--) {
                 for(int x=0; x<texSize; x++) {
                     int i = (y*texSize + x)*4;
-                    byte t = (byte) data[i];
                     bb.put((byte) data[i]).put((byte) data[i+1]).put((byte) data[i+2]);
                 }
             }

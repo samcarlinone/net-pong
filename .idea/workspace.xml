@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4ffa5a67-f4b1-4502-9cb1-c3fe6162e895" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/samcarlinone/netpong/Main.java" afterPath="$PROJECT_DIR$/src/com/samcarlinone/netpong/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/samcarlinone/netpong/game/TestShader.java" afterPath="$PROJECT_DIR$/src/com/samcarlinone/netpong/game/TestShader.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/samcarlinone/netpong/graphics/TextRenderer.java" afterPath="$PROJECT_DIR$/src/com/samcarlinone/netpong/graphics/TextRenderer.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -36,10 +33,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TestShader.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TestShader.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/samcarlinone/netpong/game/TestShader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="412">
+            <state relative-caret-position="901">
               <caret line="59" column="43" lean-forward="false" selection-start-line="59" selection-start-column="43" selection-end-line="59" selection-end-column="43" />
               <folding />
             </state>
@@ -49,18 +46,18 @@
       <file leaf-file-name="Shader.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/samcarlinone/netpong/graphics/Shader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="586">
+            <state relative-caret-position="969">
               <caret line="66" column="0" lean-forward="false" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TextRenderer.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TextRenderer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/samcarlinone/netpong/graphics/TextRenderer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
-              <caret line="177" column="47" lean-forward="false" selection-start-line="177" selection-start-column="47" selection-end-line="177" selection-end-column="47" />
+            <state relative-caret-position="51">
+              <caret line="61" column="75" lean-forward="false" selection-start-line="61" selection-start-column="75" selection-end-line="61" selection-end-column="75" />
               <folding>
                 <element signature="e#1222#1223#0" expanded="true" />
                 <element signature="e#1253#1254#0" expanded="true" />
@@ -825,12 +822,12 @@
       <workItem from="1487340093916" duration="29000" />
       <workItem from="1487342762124" duration="660000" />
       <workItem from="1487347472199" duration="2652000" />
-      <workItem from="1487374848530" duration="9908000" />
+      <workItem from="1487374848530" duration="10052000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="78182000" />
+    <option name="totallyTimeSpent" value="78326000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1293,14 +1290,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/samcarlinone/netpong/graphics/Shader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="586">
-          <caret line="66" column="0" lean-forward="false" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/samcarlinone/netpong/graphics/Text.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="412">
@@ -1320,24 +1309,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/samcarlinone/netpong/game/TestShader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="412">
-          <caret line="59" column="43" lean-forward="false" selection-start-line="59" selection-start-column="43" selection-end-line="59" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/samcarlinone/netpong/graphics/TextRenderer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="177" column="47" lean-forward="false" selection-start-line="177" selection-start-column="47" selection-end-line="177" selection-end-column="47" />
+        <state relative-caret-position="51">
+          <caret line="61" column="75" lean-forward="false" selection-start-line="61" selection-start-column="75" selection-end-line="61" selection-end-column="75" />
           <folding>
             <element signature="e#1222#1223#0" expanded="true" />
             <element signature="e#1253#1254#0" expanded="true" />
             <element signature="e#1294#1295#0" expanded="true" />
             <element signature="e#1328#1329#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/samcarlinone/netpong/graphics/Shader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="969">
+          <caret line="66" column="0" lean-forward="false" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/samcarlinone/netpong/game/TestShader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="901">
+          <caret line="59" column="43" lean-forward="false" selection-start-line="59" selection-start-column="43" selection-end-line="59" selection-end-column="43" />
+          <folding />
         </state>
       </provider>
     </entry>
