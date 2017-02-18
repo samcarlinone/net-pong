@@ -1,16 +1,10 @@
 package com.samcarlinone.netpong.game;
 
 import com.samcarlinone.netpong.Main;
-import com.samcarlinone.netpong.graphics.Font;
 import com.samcarlinone.netpong.graphics.ParticleManager;
 import com.samcarlinone.netpong.graphics.Shader;
 import com.samcarlinone.netpong.math.Collision;
 import com.samcarlinone.netpong.math.Matrix4f;
-
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
 /**
  * Created by CARLINSE1 on 2/9/2017.
@@ -23,7 +17,6 @@ public class LocalGame implements Module {
     private Paddle p1;
     private Paddle p2;
     private Ball b;
-    private Font text;
 
     public LocalGame() {
         trs = new Shader("trs");
