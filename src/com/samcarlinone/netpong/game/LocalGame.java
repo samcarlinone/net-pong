@@ -5,6 +5,7 @@ import com.samcarlinone.netpong.graphics.ParticleManager;
 import com.samcarlinone.netpong.graphics.Shader;
 import com.samcarlinone.netpong.math.Collision;
 import com.samcarlinone.netpong.math.Matrix4f;
+import com.samcarlinone.netpong.math.Resolver;
 
 /**
  * Created by CARLINSE1 on 2/9/2017.
@@ -50,20 +51,21 @@ public class LocalGame implements Module {
         p2.update();
         b.update();
 
-        if(b.rect.y+b.rect.h > Main.height/2 || b.rect.y-b.rect.h < -Main.height/2) {
-            b.rect.yv = -b.rect.yv;
-        }
+        Resolver.Dynamic_YLine(b.rect, -Main.height/2);
+        Resolver.Dynamic_YLine(b.rect, Main.height/2);
+        Resolver.Dynamic_XLine(b.rect, -Main.width/2);
+        Resolver.Dynamic_XLine(b.rect, Main.width/2);
 
-        if(Collision.RectXRect(p1.rect, b.rect)) {
-            b.rect.xv = -b.rect.xv + Math.copySign(0.5f, -b.rect.xv);
-            b.rect.yv += p1.rect.yv / 5f;
+        if(Resolver.Dynamic_Static(b.rect, p1.rect)) {
+            b.rect.xv = b.rect.xv*1.025f;
+            b.rect.yv += p1.rect.yv / 5f + Math.random()/2f;
 
             pm.spawnAngled(b.rect.x, b.rect.y, 20, (float)Math.PI/2f, (float)Math.PI/-2f, 10f, 60f);
         }
 
-        if(Collision.RectXRect(p2.rect, b.rect)) {
-            b.rect.xv = -b.rect.xv*1.1f;
-            b.rect.yv += p2.rect.yv / 5f;
+        if(Resolver.Dynamic_Static(b.rect, p2.rect)) {
+            b.rect.xv = b.rect.xv*1.025f;
+            b.rect.yv += p2.rect.yv / 5f + Math.random()/2f;
 
             pm.spawnAngled(b.rect.x, b.rect.y, 20, (float)Math.PI/2f, (float)Math.PI*3f/2f, 10f, 60f);
         }

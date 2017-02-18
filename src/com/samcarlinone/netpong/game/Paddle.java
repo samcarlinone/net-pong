@@ -2,7 +2,6 @@ package com.samcarlinone.netpong.game;
 
 import com.samcarlinone.netpong.graphics.BasicQuads;
 import com.samcarlinone.netpong.graphics.Shader;
-import com.samcarlinone.netpong.math.CRect;
 import com.samcarlinone.netpong.math.Matrix4f;
 import com.samcarlinone.netpong.math.StaticRect;
 import com.samcarlinone.netpong.math.Vector3f;

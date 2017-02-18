@@ -2,11 +2,9 @@ package com.samcarlinone.netpong.game;
 
 import com.samcarlinone.netpong.graphics.BasicMesh;
 import com.samcarlinone.netpong.graphics.Shader;
-import com.samcarlinone.netpong.math.CRect;
 import com.samcarlinone.netpong.math.DynamicRect;
 import com.samcarlinone.netpong.math.Matrix4f;
 import com.samcarlinone.netpong.math.Vector3f;
-import com.samcarlinone.netpong.util.KeyboardInput;
 
 /**
  * Created by CARLINSE1 on 2/9/2017.
