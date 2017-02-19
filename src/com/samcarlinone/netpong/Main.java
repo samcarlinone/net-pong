@@ -1,5 +1,6 @@
 package com.samcarlinone.netpong;
 
+import com.samcarlinone.netpong.game.LANGame;
 import com.samcarlinone.netpong.game.Menu;
 import com.samcarlinone.netpong.game.Module;
 import com.samcarlinone.netpong.util.KeyboardInput;
@@ -92,6 +93,10 @@ public class Main implements Runnable{
             }
             if (glfwWindowShouldClose(window))
                 running = false;
+        }
+
+        if(currentModule instanceof LANGame) {
+            ((LANGame) currentModule).terminate();
         }
 
         glfwDestroyWindow(window);

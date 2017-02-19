@@ -4,6 +4,7 @@ import com.samcarlinone.netpong.Main;
 import com.samcarlinone.netpong.graphics.*;
 import com.samcarlinone.netpong.math.Matrix4f;
 import com.samcarlinone.netpong.networking.LANAsyncConnector;
+import com.samcarlinone.netpong.networking.TCPThread;
 import com.samcarlinone.netpong.util.KeyboardInput;
 
 import static org.lwjgl.opengl.GL11.GL_NO_ERROR;
@@ -72,8 +73,10 @@ public class WaitLANConnect implements Module {
 
         renderer.update();
 
-        if(connector.connect() != null) {
+        TCPThread conn = connector.connect();
+        if(conn != null) {
             System.out.println("Connected");
+            return new LANGame(conn);
         }
 
         return null;

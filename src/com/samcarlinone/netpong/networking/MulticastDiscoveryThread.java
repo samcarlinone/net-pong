@@ -11,7 +11,7 @@ import java.util.concurrent.ArrayBlockingQueue;
 public class MulticastDiscoveryThread extends Thread{
     protected DatagramSocket socket = null;
 
-    private long FIVE_SECONDS = 5000;
+    private long SEND_INTERVAL = 2500;
     private int LISTEN_TIMEOUT = 3000;
 
     public ArrayBlockingQueue<String> queue;
@@ -79,7 +79,7 @@ public class MulticastDiscoveryThread extends Thread{
 
                 // sleep for a while
                 try {
-                    sleep((long)(Math.random() * FIVE_SECONDS));
+                    sleep((long)(Math.random() * SEND_INTERVAL));
                 } catch (InterruptedException e) { }
             } catch (IOException e) {
                 e.printStackTrace();

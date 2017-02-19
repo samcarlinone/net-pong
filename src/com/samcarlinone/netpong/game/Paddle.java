@@ -47,13 +47,15 @@ public class Paddle {
     }
 
     public void update() {
-        if(KeyboardInput.isKeyDown(this.up)) {
-            rect.yv = speed;
-        } else {
-            if (KeyboardInput.isKeyDown(this.down)) {
-                rect.yv = -speed;
+        if(this.up != -1) {
+            if (KeyboardInput.isKeyDown(this.up)) {
+                rect.yv = speed;
             } else {
-                rect.yv = 0f;
+                if (KeyboardInput.isKeyDown(this.down)) {
+                    rect.yv = -speed;
+                } else {
+                    rect.yv = 0f;
+                }
             }
         }
 

@@ -12,7 +12,7 @@ import java.util.concurrent.ArrayBlockingQueue;
  * Created by CARLINSE1 on 1/31/2017.
  */
 public class TCPThread extends Thread {
-    public Boolean isHost = false;
+    private Boolean isHost = false;
 
     private ServerSocket server_socket;
     private Socket socket;
@@ -52,12 +52,10 @@ public class TCPThread extends Thread {
             write = new DataOutputStream(socket.getOutputStream());
         } catch(IOException e) {
             System.err.println("\n\nTCPThread error\n\n");
+            System.exit(0);
         }
 
         while(true) {
-            if(command_queue.peek() != null)
-                break;
-
             if(canRead()) {
                 try {
                     rx_queue.put(read());
@@ -69,6 +67,9 @@ public class TCPThread extends Thread {
             if(tx_queue.peek() != null) {
                 write(tx_queue.poll());
             }
+
+            if(command_queue.peek() != null)
+                break;
 
             try {
                 sleep(1L);
@@ -111,6 +112,24 @@ public class TCPThread extends Thread {
         } catch(IOException e) {
             System.out.println("TCP Send Failed");
             return;
+        }
+    }
+
+    /**
+     * Check if thread is host
+     * @return whether server or client
+     */
+    public boolean isHost() {
+        return this.isHost;
+    }
+
+    public static void sendSafe(TCPThread conn, String msg) {
+        while(true) {
+            try {
+                conn.tx_queue.put(msg);
+                return;
+            } catch (InterruptedException e) {
+            }
         }
     }
 }
