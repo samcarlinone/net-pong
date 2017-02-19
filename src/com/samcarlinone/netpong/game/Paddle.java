@@ -1,5 +1,6 @@
 package com.samcarlinone.netpong.game;
 
+import com.samcarlinone.netpong.Main;
 import com.samcarlinone.netpong.graphics.BasicMesh;
 import com.samcarlinone.netpong.graphics.Shader;
 import com.samcarlinone.netpong.math.Matrix4f;
@@ -57,5 +58,13 @@ public class Paddle {
         }
 
         rect.update();
+
+        if(rect.y - rect.h < -Main.height/2) {
+            rect.y = -Main.height/2 + rect.h;
+        }
+
+        if(rect.y + rect.h > Main.height/2) {
+            rect.y = Main.height/2 - rect.h;
+        }
     }
 }

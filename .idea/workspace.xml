@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4ffa5a67-f4b1-4502-9cb1-c3fe6162e895" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/samcarlinone/netpong/graphics/BasicQuads.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shaders/trs.vert" afterPath="$PROJECT_DIR$/shaders/trs.vert" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/samcarlinone/netpong/game/LocalGame.java" afterPath="$PROJECT_DIR$/src/com/samcarlinone/netpong/game/LocalGame.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/samcarlinone/netpong/game/Paddle.java" afterPath="$PROJECT_DIR$/src/com/samcarlinone/netpong/game/Paddle.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/samcarlinone/netpong/graphics/ParticleManager.java" afterPath="$PROJECT_DIR$/src/com/samcarlinone/netpong/graphics/ParticleManager.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,8 +27,8 @@
       <file leaf-file-name="Menu.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/samcarlinone/netpong/game/Menu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="106">
-              <caret line="10" column="37" lean-forward="false" selection-start-line="10" selection-start-column="37" selection-end-line="10" selection-end-column="37" />
+            <state relative-caret-position="344">
+              <caret line="60" column="8" lean-forward="false" selection-start-line="60" selection-start-column="8" selection-end-line="65" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -37,11 +36,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LocalGame.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TestShader.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/samcarlinone/netpong/game/TestShader.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="98">
+              <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LocalGame.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/samcarlinone/netpong/game/LocalGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1177">
-              <caret line="95" column="20" lean-forward="false" selection-start-line="95" selection-start-column="20" selection-end-line="95" selection-end-column="20" />
+            <state relative-caret-position="344">
+              <caret line="95" column="39" lean-forward="true" selection-start-line="95" selection-start-column="39" selection-end-line="95" selection-end-column="53" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -49,44 +58,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ParticleManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/samcarlinone/netpong/graphics/ParticleManager.java">
+      <file leaf-file-name="Paddle.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/samcarlinone/netpong/game/Paddle.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-905">
-              <caret line="41" column="17" lean-forward="false" selection-start-line="41" selection-start-column="17" selection-end-line="41" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Collision.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/samcarlinone/netpong/math/Collision.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="13" lean-forward="true" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Resolver.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/samcarlinone/netpong/math/Resolver.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="816">
-              <caret line="48" column="26" lean-forward="true" selection-start-line="48" selection-start-column="26" selection-end-line="48" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Ball.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/samcarlinone/netpong/game/Ball.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-34">
-              <caret line="11" column="17" lean-forward="false" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+            <state relative-caret-position="531">
+              <caret line="66" column="36" lean-forward="false" selection-start-line="66" selection-start-column="36" selection-end-line="66" selection-end-column="36" />
               <folding>
-                <element signature="e#1594#1595#0" expanded="true" />
-                <element signature="e#1623#1624#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -146,7 +124,6 @@
         <option value="$PROJECT_DIR$/src/com/samcarlinone/netpong/graphics/BasicMesh.java" />
         <option value="$PROJECT_DIR$/src/com/samcarlinone/netpong/graphics/BasicQuads.java" />
         <option value="$PROJECT_DIR$/src/com/samcarlinone/netpong/graphics/Font.java" />
-        <option value="$PROJECT_DIR$/shaders/arrayTexture.vert" />
         <option value="$PROJECT_DIR$/shaders/arrayTexture.frag" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/shaders/text.frag" />
@@ -164,6 +141,8 @@
         <option value="$PROJECT_DIR$/src/com/samcarlinone/netpong/math/Collision.java" />
         <option value="$PROJECT_DIR$/src/com/samcarlinone/netpong/math/Resolver.java" />
         <option value="$PROJECT_DIR$/src/com/samcarlinone/netpong/graphics/ParticleManager.java" />
+        <option value="$PROJECT_DIR$/shaders/trs.vert" />
+        <option value="$PROJECT_DIR$/shaders/arrayTexture.vert" />
         <option value="$PROJECT_DIR$/src/com/samcarlinone/netpong/game/LocalGame.java" />
         <option value="$PROJECT_DIR$/src/com/samcarlinone/netpong/game/Paddle.java" />
       </list>
@@ -823,12 +802,12 @@
       <workItem from="1487342762124" duration="660000" />
       <workItem from="1487347472199" duration="2652000" />
       <workItem from="1487374848530" duration="11963000" />
-      <workItem from="1487440485162" duration="12710000" />
+      <workItem from="1487440485162" duration="13960000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="92947000" />
+    <option name="totallyTimeSpent" value="94197000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -922,13 +901,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/shaders/trs.vert">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" column="21" lean-forward="false" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/samcarlinone/netpong/game/Module.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="266">
@@ -973,13 +945,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/shaders/arrayTexture.vert">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="1" lean-forward="false" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/samcarlinone/netpong/util/BufferUtils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -1001,14 +966,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="202">
           <caret line="520" column="0" lean-forward="false" selection-start-line="520" selection-start-column="0" selection-end-line="520" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/samcarlinone/netpong/graphics/BasicMesh.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1158,14 +1115,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/samcarlinone/netpong/game/TestShader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4">
-          <caret line="47" column="26" lean-forward="true" selection-start-line="47" selection-start-column="26" selection-end-line="47" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/samcarlinone/netpong/graphics/Text.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="718">
@@ -1179,16 +1128,6 @@
         <state relative-caret-position="85">
           <caret line="6" column="36" lean-forward="true" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/samcarlinone/netpong/game/Menu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="106">
-          <caret line="10" column="37" lean-forward="false" selection-start-line="10" selection-start-column="37" selection-end-line="10" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1251,36 +1190,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/samcarlinone/netpong/graphics/TextRenderer.java">
+    <entry file="file://$PROJECT_DIR$/src/com/samcarlinone/netpong/game/TestShader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="173" column="16" lean-forward="false" selection-start-line="173" selection-start-column="16" selection-end-line="179" selection-end-column="49" />
+        <state relative-caret-position="98">
+          <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/samcarlinone/netpong/graphics/ParticleManager.java">
+    <entry file="file://$PROJECT_DIR$/src/com/samcarlinone/netpong/game/Menu.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-905">
-          <caret line="41" column="17" lean-forward="false" selection-start-line="41" selection-start-column="17" selection-end-line="41" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/samcarlinone/netpong/game/Paddle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="31" column="11" lean-forward="false" selection-start-line="31" selection-start-column="11" selection-end-line="31" selection-end-column="11" />
+        <state relative-caret-position="344">
+          <caret line="60" column="8" lean-forward="false" selection-start-line="60" selection-start-column="8" selection-end-line="65" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/samcarlinone/netpong/graphics/ParticleManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="41" column="17" lean-forward="false" selection-start-line="41" selection-start-column="17" selection-end-line="41" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/samcarlinone/netpong/game/Ball.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-34">
-          <caret line="11" column="17" lean-forward="false" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+        <state relative-caret-position="136">
+          <caret line="36" column="29" lean-forward="false" selection-start-line="36" selection-start-column="29" selection-end-line="36" selection-end-column="29" />
           <folding>
             <element signature="e#1594#1595#0" expanded="true" />
             <element signature="e#1623#1624#0" expanded="true" />
@@ -1288,10 +1227,52 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/shaders/arrayTexture.vert">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="43" lean-forward="false" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/samcarlinone/netpong/graphics/BasicMesh.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/samcarlinone/netpong/graphics/TextRenderer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="565">
+          <caret line="173" column="16" lean-forward="false" selection-start-line="173" selection-start-column="16" selection-end-line="179" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shaders/trs.vert">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/samcarlinone/netpong/game/LocalGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1177">
-          <caret line="95" column="20" lean-forward="false" selection-start-line="95" selection-start-column="20" selection-end-line="95" selection-end-column="20" />
+        <state relative-caret-position="344">
+          <caret line="95" column="39" lean-forward="true" selection-start-line="95" selection-start-column="39" selection-end-line="95" selection-end-column="53" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/samcarlinone/netpong/game/Paddle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="531">
+          <caret line="66" column="36" lean-forward="false" selection-start-line="66" selection-start-column="36" selection-end-line="66" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

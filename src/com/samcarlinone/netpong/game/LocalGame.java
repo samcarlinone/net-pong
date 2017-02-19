@@ -3,6 +3,8 @@ package com.samcarlinone.netpong.game;
 import com.samcarlinone.netpong.Main;
 import com.samcarlinone.netpong.graphics.ParticleManager;
 import com.samcarlinone.netpong.graphics.Shader;
+import com.samcarlinone.netpong.graphics.Text;
+import com.samcarlinone.netpong.graphics.TextRenderer;
 import com.samcarlinone.netpong.math.Collision;
 import com.samcarlinone.netpong.math.Matrix4f;
 import com.samcarlinone.netpong.math.Resolver;
@@ -17,6 +19,9 @@ public class LocalGame implements Module {
 
     private Shader trs;
     private Shader part;
+    private Shader textShader;
+    private TextRenderer renderer;
+    private Text score;
     private ParticleManager pm;
     private Paddle p1;
     private Paddle p2;
@@ -28,8 +33,14 @@ public class LocalGame implements Module {
     public LocalGame() {
         trs = new Shader("trs");
         part = new Shader("part");
+        textShader = new Shader("text");
 
+        renderer = new TextRenderer();
         pm = new ParticleManager();
+
+        score = new Text("0:0", -96, Main.height/2-64);
+        score.setScale(4);
+        renderer.addText(score);
 
         init();
 
@@ -40,6 +51,10 @@ public class LocalGame implements Module {
     public void render() {
         Matrix4f projection = new Matrix4f();
         projection.orthographic(-Main.width/2, Main.width/2, -Main.height/2, Main.height/2, -1, 1);
+
+        textShader.enable();
+        textShader.setUniformMat4f("proj", projection);
+        renderer.render();
 
         trs.enable();
         trs.setUniformMat4f("proj", projection);
@@ -58,6 +73,9 @@ public class LocalGame implements Module {
         } else {
             ballStuck();
         }
+
+        score.setText(p1Score + ":" + p2Score);
+        renderer.update();
 
         return null;
     }
@@ -96,15 +114,17 @@ public class LocalGame implements Module {
         pm.update();
 
         if(b.rect.x < -Main.width/2-10) {
-            p1Score ++;
-            kickoffLeft = false;
-            init();
-        }
-
-        if(b.rect.x > Main.width/2+10) {
             p2Score ++;
             kickoffLeft = true;
             init();
+            ballStuck();
+        }
+
+        if(b.rect.x > Main.width/2+10) {
+            p1Score ++;
+            kickoffLeft = false;
+            init();
+            ballStuck();
         }
     }
 
