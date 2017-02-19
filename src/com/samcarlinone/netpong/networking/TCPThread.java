@@ -77,10 +77,10 @@ public class TCPThread extends Thread {
     }
 
     /**
-     * Get the first message from connected TCPLink
+     * Get the first message from connected TCPThread
      * @return String containing message
      */
-    public String read() {
+    private String read() {
         try {
             return read.readLine();
         } catch(IOException e) {
@@ -89,7 +89,7 @@ public class TCPThread extends Thread {
         }
     }
 
-    public boolean canRead() {
+    private boolean canRead() {
         try {
             return read.ready();
         } catch(IOException e) {
@@ -99,10 +99,10 @@ public class TCPThread extends Thread {
     }
 
     /**
-     * Sends a message to connected TCPLink
+     * Sends a message to connected TCPThread
      * @param tx String containing message, does not need to be newline terminated
      */
-    public void write(String tx) {
+    private void write(String tx) {
         if(!tx.endsWith("\n"))
             tx = tx+"\n";
 

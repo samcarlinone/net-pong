@@ -25,7 +25,7 @@ public class LANAsyncConnector {
     }
 
     /**
-     * Returns TCPLink or null if no peer found yet
+     * Returns TCPThread or null if no peer found yet
      * @return
      */
     public TCPThread connect() {

@@ -15,7 +15,6 @@ public class MulticastDiscoveryThread extends Thread{
     private int LISTEN_TIMEOUT = 3000;
 
     public ArrayBlockingQueue<String> queue;
-    public ArrayBlockingQueue<TCPLink> connection;
 
     public MulticastDiscoveryThread() throws IOException {
         super("MulticastDiscoveryThread");
