@@ -2,11 +2,9 @@ package com.samcarlinone.netpong;
 
 import com.samcarlinone.netpong.game.Menu;
 import com.samcarlinone.netpong.game.Module;
-import com.samcarlinone.netpong.game.TestShader;
 import com.samcarlinone.netpong.util.KeyboardInput;
 import org.lwjgl.glfw.*;
 import org.lwjgl.opengl.*;
-import org.lwjgl.system.MemoryUtil;
 
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;

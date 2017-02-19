@@ -87,7 +87,11 @@ public class Menu implements Module {
         renderer.update();
 
         if(KeyboardInput.isKeyDown(32)) {
-            return new LocalGame();
+            if(mode) {
+                return new WaitLANConnect();
+            } else {
+                return new LocalGame();
+            }
         }
 
         if(KeyboardInput.isKeyDown(KeyboardInput.RIGHT) || KeyboardInput.isKeyDown('D')) {
