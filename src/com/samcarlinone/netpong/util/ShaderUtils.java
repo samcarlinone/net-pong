@@ -1,5 +1,7 @@
 package com.samcarlinone.netpong.util;
 
+import java.io.File;
+
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL20.*;
 
@@ -8,9 +10,9 @@ public class ShaderUtils {
 	private ShaderUtils() {
 	}
 	
-	public static int load(String vertPath, String fragPath) {
-		String vert = FileUtils.loadAsString(vertPath); 
-		String frag = FileUtils.loadAsString(fragPath);
+	public static int load(String vertFile, String fragFile) {
+		String vert = FileUtils.loadAsString(vertFile);
+		String frag = FileUtils.loadAsString(fragFile);
 		return create(vert, frag);
 	}
 	

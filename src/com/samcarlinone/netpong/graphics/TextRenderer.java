@@ -1,30 +1,19 @@
 package com.samcarlinone.netpong.graphics;
 import org.lwjgl.BufferUtils;
-import org.lwjgl.glfw.*;
-import org.lwjgl.opengl.EXTTextureFilterAnisotropic;
-import org.lwjgl.opengl.GL;
-import org.lwjgl.opengl.GLCapabilities;
-import org.lwjgl.opengl.GLUtil;
-import org.lwjgl.system.Callback;
-import org.lwjgl.system.CallbackI;
 
 import javax.imageio.ImageIO;
-import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.FloatBuffer;
 import java.util.AbstractList;
 import java.util.ArrayList;
 
-import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL12.*;
 import static org.lwjgl.opengl.GL15.*;
 import static org.lwjgl.opengl.GL20.*;
 import static org.lwjgl.opengl.GL30.*;
-import static org.lwjgl.system.MemoryUtil.*;
 
 
 /**
@@ -67,7 +56,7 @@ public class TextRenderer {
         BufferedImage img = null;
 
         try {
-            img = ImageIO.read(new File("bitmap_font.png"));
+            img = ImageIO.read(this.getClass().getResourceAsStream("/bitmap_font.png"));
         } catch (IOException e) {
             System.err.println("Image Not Loaded");
             return;

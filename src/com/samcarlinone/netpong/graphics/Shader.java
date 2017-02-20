@@ -7,6 +7,7 @@ import com.samcarlinone.netpong.util.ShaderUtils;
 
 import static org.lwjgl.opengl.GL20.*;
 
+import java.io.File;
 import java.util.HashMap;
 /**
  * Created by CARLINSE1 on 2/6/2017.
@@ -20,7 +21,7 @@ public class Shader {
     private HashMap<String, Integer> uniformCache = new HashMap<>();
 
     public Shader(String name) {
-        ID = ShaderUtils.load("shaders\\"+name+".vert", "shaders\\"+name+".frag");
+        ID = ShaderUtils.load("shaders/" +name+".vert", "shaders/" +name+".frag");
     }
 
     public int findUniform(String name) {

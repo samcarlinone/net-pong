@@ -1,9 +1,6 @@
 package com.samcarlinone.netpong.util;
 
-import java.awt.*;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 public class FileUtils {
 
@@ -13,7 +10,7 @@ public class FileUtils {
 	public static String loadAsString(String file) {
 		StringBuilder result = new StringBuilder();
 		try {
-			BufferedReader reader = new BufferedReader(new FileReader(file));
+			BufferedReader reader = new BufferedReader(new InputStreamReader(FileUtils.class.getClassLoader().getResourceAsStream(file)));
 			String buffer = "";
 			while ((buffer = reader.readLine()) != null) {
 				result.append(buffer + '\n');
