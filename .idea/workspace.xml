@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4ffa5a67-f4b1-4502-9cb1-c3fe6162e895" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/samcarlinone/netpong/game/LANGame.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/samcarlinone/netpong/Main.java" afterPath="$PROJECT_DIR$/src/com/samcarlinone/netpong/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/samcarlinone/netpong/game/Paddle.java" afterPath="$PROJECT_DIR$/src/com/samcarlinone/netpong/game/Paddle.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/samcarlinone/netpong/game/WaitLANConnect.java" afterPath="$PROJECT_DIR$/src/com/samcarlinone/netpong/game/WaitLANConnect.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/samcarlinone/netpong/networking/MulticastDiscoveryThread.java" afterPath="$PROJECT_DIR$/src/com/samcarlinone/netpong/networking/MulticastDiscoveryThread.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/samcarlinone/netpong/networking/TCPThread.java" afterPath="$PROJECT_DIR$/src/com/samcarlinone/netpong/networking/TCPThread.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -61,14 +55,27 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LANGame.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LANGame.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/samcarlinone/netpong/game/LANGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="111" column="41" lean-forward="false" selection-start-line="111" selection-start-column="41" selection-end-line="111" selection-end-column="41" />
+            <state relative-caret-position="68">
+              <caret line="103" column="39" lean-forward="true" selection-start-line="103" selection-start-column="39" selection-end-line="103" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="17">
+                <caret line="1" column="45" lean-forward="false" selection-start-line="1" selection-start-column="45" selection-end-line="1" selection-end-column="45" />
+                <folding />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -218,6 +225,7 @@
         <option value="$PROJECT_DIR$/src/com/samcarlinone/netpong/networking/TCPThread.java" />
         <option value="$PROJECT_DIR$/src/com/samcarlinone/netpong/Main.java" />
         <option value="$PROJECT_DIR$/src/com/samcarlinone/netpong/game/LANGame.java" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -898,12 +906,12 @@
       <workItem from="1487342762124" duration="660000" />
       <workItem from="1487347472199" duration="2652000" />
       <workItem from="1487374848530" duration="11963000" />
-      <workItem from="1487440485162" duration="24761000" />
+      <workItem from="1487440485162" duration="25164000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="104998000" />
+    <option name="totallyTimeSpent" value="105401000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -967,7 +975,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/src/Main.java" />
     <entry file="file://$PROJECT_DIR$/src/com/samcarlinone/netpong/graphics/Font.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2109">
@@ -1379,11 +1386,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/samcarlinone/netpong/game/LANGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="111" column="41" lean-forward="false" selection-start-line="111" selection-start-column="41" selection-end-line="111" selection-end-column="41" />
+        <state relative-caret-position="68">
+          <caret line="103" column="39" lean-forward="true" selection-start-line="103" selection-start-column="39" selection-end-line="103" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="17">
+            <caret line="1" column="45" lean-forward="false" selection-start-line="1" selection-start-column="45" selection-end-line="1" selection-end-column="45" />
+            <folding />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
