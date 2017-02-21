@@ -13,6 +13,8 @@ import java.util.concurrent.ArrayBlockingQueue;
  */
 public class TCPThread extends Thread {
     private Boolean isHost = false;
+    private Boolean hasConnected = false;
+    private Boolean hasDisconnected = false;
 
     private ServerSocket server_socket;
     private Socket socket;
@@ -55,6 +57,8 @@ public class TCPThread extends Thread {
             System.exit(0);
         }
 
+        hasConnected = true;
+
         while(true) {
             if(canRead()) {
                 try {
@@ -77,10 +81,6 @@ public class TCPThread extends Thread {
         }
     }
 
-    /**
-     * Get the first message from connected TCPThread
-     * @return String containing message
-     */
     private String read() {
         try {
             return read.readLine();
@@ -99,10 +99,6 @@ public class TCPThread extends Thread {
         }
     }
 
-    /**
-     * Sends a message to connected TCPThread
-     * @param tx String containing message, does not need to be newline terminated
-     */
     private void write(String tx) {
         if(!tx.endsWith("\n"))
             tx = tx+"\n";
@@ -111,6 +107,7 @@ public class TCPThread extends Thread {
             write.writeBytes(tx);
         } catch(IOException e) {
             System.out.println("TCP Send Failed");
+            hasDisconnected = true;
             return;
         }
     }
@@ -123,13 +120,20 @@ public class TCPThread extends Thread {
         return this.isHost;
     }
 
-    public static void sendSafe(TCPThread conn, String msg) {
+    public boolean hasConnected() { return this.hasConnected; }
+    public boolean hasDisconnected() { return this.hasDisconnected; }
+
+    public void sendSafe(String msg) {
         while(true) {
             try {
-                conn.tx_queue.put(msg);
+                tx_queue.put(msg);
                 return;
             } catch (InterruptedException e) {
             }
         }
+    }
+
+    public String recieveSafe() {
+        return rx_queue.poll();
     }
 }

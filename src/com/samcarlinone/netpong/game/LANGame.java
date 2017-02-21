@@ -62,7 +62,7 @@ public class LANGame implements Module {
 
     public void terminate() {
         try {
-            TCPThread.sendSafe(conn, "disconnect");
+            conn.sendSafe("disconnect");
             conn.command_queue.put("terminate");
         } catch(InterruptedException e) {
             System.exit(0);
@@ -132,7 +132,7 @@ public class LANGame implements Module {
 
         //Send speed
         if(myPaddle.rect.yv != lastSpeed) {
-            TCPThread.sendSafe(conn, Float.toString(myPaddle.rect.yv));
+            conn.sendSafe(Float.toString(myPaddle.rect.yv));
             lastSpeed = myPaddle.rect.yv;
         }
 
@@ -174,7 +174,7 @@ public class LANGame implements Module {
             b.rect.yv += p1.rect.yv / 5f + generator.nextFloat()/2f;
 
             if(leftSide)
-                TCPThread.sendSafe(conn, "r:"+b.rect.x+":"+b.rect.y+":"+b.rect.xv+":"+b.rect.yv);
+                conn.sendSafe("r:"+b.rect.x+":"+b.rect.y+":"+b.rect.xv+":"+b.rect.yv);
 
             pm.spawnAngled(b.rect.x, b.rect.y, 20, (float)Math.PI/2f, (float)Math.PI/-2f, 10f, 60f);
         }
@@ -184,7 +184,7 @@ public class LANGame implements Module {
             b.rect.yv += p2.rect.yv / 5f + generator.nextFloat()/2f;
 
             if(!leftSide)
-                TCPThread.sendSafe(conn, "r:"+b.rect.x+":"+b.rect.y+":"+b.rect.xv+":"+b.rect.yv);
+                conn.sendSafe("r:"+b.rect.x+":"+b.rect.y+":"+b.rect.xv+":"+b.rect.yv);
 
             pm.spawnAngled(b.rect.x, b.rect.y, 20, (float)Math.PI/2f, (float)Math.PI*3f/2f, 10f, 60f);
         }
@@ -216,7 +216,7 @@ public class LANGame implements Module {
             b.rect.x = p1.rect.x + b.rect.w + p1.rect.w;
 
             if(KeyboardInput.isKeyDown('D') && leftSide) {
-                TCPThread.sendSafe(conn, "start");
+                conn.sendSafe("start");
 
                 b.rect.xv = 4;
                 b.rect.x += 2;
@@ -228,7 +228,7 @@ public class LANGame implements Module {
             b.rect.x = p2.rect.x - (b.rect.w + p2.rect.w);
 
             if(KeyboardInput.isKeyDown(KeyboardInput.LEFT) && !leftSide) {
-                TCPThread.sendSafe(conn, "start");
+                conn.sendSafe("start");
 
                 b.rect.xv = -4;
                 b.rect.x += -2;
