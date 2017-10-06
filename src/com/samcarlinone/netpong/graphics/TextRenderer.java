@@ -56,7 +56,7 @@ public class TextRenderer {
         BufferedImage img = null;
 
         try {
-            img = ImageIO.read(this.getClass().getResourceAsStream("/bitmap_font.png"));
+            img = ImageIO.read(this.getClass().getResourceAsStream("/images/bitmap_font.png"));
         } catch (IOException e) {
             System.err.println("Image Not Loaded");
             return;
